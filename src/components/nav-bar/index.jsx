@@ -1,4 +1,4 @@
-import React from 'react'
+
 import "./index.css"
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import CartWidget from './CartWidget';

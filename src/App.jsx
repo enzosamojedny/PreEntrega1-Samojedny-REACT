@@ -1,14 +1,15 @@
 
 import './App.css'
 import Header from './components/nav-bar'
-import Body from './components/nav-bar/Body'
-import ItemListContainer from './components/nav-bar/ItemListContainer'
+import ItemListContainer from './components/body-items/ItemListContainer'
+import Item from './components/body-items/Item'
+import { useState } from 'react'
 function App() {
 
   return (
     <>
       <Header />
-      <Body />
+      <Item />
       <ItemListContainer />
     </>
   )

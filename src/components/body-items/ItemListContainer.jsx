@@ -1,5 +1,7 @@
+
+
 const ItemListContainer = () => {
-    const greetingMessage = "Hello, welcome to our store!";
+    const greetingMessage = "";
 
     return (
         <div>

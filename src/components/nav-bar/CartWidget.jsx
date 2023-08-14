@@ -9,17 +9,6 @@ function CartWidget() {
 
     }, [])
 
-    function counter1() {
-        setNumber(number + 1)
-    }
-    function counter2() {
-        if (setNumber > 0) {
-            setNumber(number - 1)
-        } else {
-            return number
-        }
-
-    }
     return (
         <div style={{ position: "relative" }} className='cart-wrapper'>
             <Button variant="dark">
