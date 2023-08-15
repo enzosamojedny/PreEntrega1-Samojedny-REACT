@@ -4,6 +4,7 @@ import { Backdrop, Box, Button, CircularProgress, Typography } from '@mui/materi
 
 import './ProductItem.css'
 import ResponsiveDialog from './ResponsiveDialog';
+import Counter from './Counter';
 function SimpleBackdrop() {
     return (
         <Backdrop
@@ -22,7 +23,7 @@ function Item({ item }) {
         let fetching = new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve(fetch('https://fakestoreapi.com/products'));
-            }, 2000);
+            }, 5000);
         });
         fetching
             .then(res => res.json())
@@ -60,9 +61,10 @@ function Item({ item }) {
                             <Button variant="outlined" size='small' style={{ color: '#000000', borderColor: '#172738', marginRight: 20, backgroundColor: '#E6E6FA', fontWeight: 600 }}>
                                 Add to Cart
                             </Button>
-                            <Button variant="outlined" size='small' style={{ color: '#000000', borderColor: '#172738', backgroundColor: '#E6E6FA', fontWeight: 600 }}>
-                                Buy Now!
-                            </Button>
+
+                            <div>
+                                <Counter />
+                            </div>
                         </Box>
                         {/*<p>Description: {product.description}</p>
                         <p>Category: {product.category}</p>*/}
