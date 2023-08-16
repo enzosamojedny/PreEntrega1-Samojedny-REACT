@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import "./index.css"
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -6,6 +7,8 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import MenuSharpIcon from '@mui/icons-material/MenuSharp';
+import ProductItem from './ProductItem';
+
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -91,7 +94,6 @@ export default function BasicTabs() {
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
-                <Body />
             </TabPanel>
             <TabPanel value={value} index={1}>
                 {items.map(item => (

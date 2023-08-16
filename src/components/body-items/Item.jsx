@@ -3,21 +3,21 @@ import React, { useState, useEffect } from 'react';
 import { Backdrop, Box, Button, CircularProgress, Typography } from '@mui/material';
 
 import './ProductItem.css'
-import ResponsiveDialog from './ResponsiveDialog';
+//import ResponsiveDialog from './ResponsiveDialog';
 import Counter from './Counter';
-function SimpleBackdrop() {
-    return (
-        <Backdrop
-            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-            open={true}
-            onClick={() => { }}
-        >
-            <CircularProgress color="inherit" />
-        </Backdrop>
-    );
-}
+// function SimpleBackdrop() {
+//     return (
+//         <Backdrop
+//             sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+//             open={true}
+//             onClick={() => { }}
+//         >
+//             <CircularProgress color="inherit" />
+//         </Backdrop>
+//     );
+// }
 function Item({ item }) {
-    const [loading, setLoading] = useState(true);
+    //const [loading, setLoading] = useState(true);
     const [result, setResult] = useState([])
     useEffect(() => {
         let fetching = new Promise((resolve, reject) => {
@@ -36,21 +36,21 @@ function Item({ item }) {
                     image: product.image,
                     rating: product.rating
                 }));
-                setResult(products);
-                setLoading(false);
+                setResult(products);//cuando se actualiza
+                //setLoading(false);
             })
             .catch(error => {
                 console.log("Oops. Something went wrong.");
                 console.log(error);
-                setLoading(false);
+                //setLoading(false);
             });
-        const timeoutId = setTimeout(() => {
-        }, 3000);
-        return () => clearTimeout(timeoutId);
+        //const timeoutId = setTimeout(() => {
+        //}, 3000);
+        //return () => clearTimeout(timeoutId);
     }, []);
     return (
         <div>
-            {loading ? <SimpleBackdrop /> : <ResponsiveDialog />}
+            {/*{loading ? <SimpleBackdrop /> : <ResponsiveDialog />}*/}
             <div className='product-container'>
                 {result.map((product, index) => (
                     <div key={index} className='product-item'>
@@ -61,7 +61,6 @@ function Item({ item }) {
                             <Button variant="outlined" size='small' style={{ color: '#000000', borderColor: '#172738', marginRight: 20, backgroundColor: '#E6E6FA', fontWeight: 600 }}>
                                 Add to Cart
                             </Button>
-
                             <div>
                                 <Counter />
                             </div>

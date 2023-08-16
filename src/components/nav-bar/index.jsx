@@ -35,11 +35,6 @@ function Header() {
 
       </div>
       <div className='nav-buttons'>
-        <Button style={{ color: 'white' }}>Woman clothes</Button>
-        <Button style={{ color: 'white' }}>Men clothes</Button>
-        <Button style={{ color: 'white' }}>Jewelry</Button>
-        <Button style={{ color: 'white' }}>Technology</Button>
-        <Button style={{ color: 'white' }}>Flash Sale</Button>
       </div>
     </>
   )
