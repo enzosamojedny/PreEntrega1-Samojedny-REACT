@@ -7,8 +7,6 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import MenuSharpIcon from '@mui/icons-material/MenuSharp';
-import ProductItem from './ProductItem';
-
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -93,58 +91,6 @@ export default function BasicTabs() {
                     <Tab label="Flash Sale" {...allProps(5)} style={{ color: 'white' }} />
                 </Tabs>
             </Box>
-            <TabPanel value={value} index={0}>
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-                {items.map(item => (
-                    <ProductItem
-                        key={item.id}
-                        title={item.title}
-                        description={item.description}
-                        price={item.price}
-                        image={item.image}
-                        item={item}
-                    />
-                ))}
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-                {items.map(item => (
-                    <ProductItem
-                        key={item.id}
-                        title={item.title}
-                        description={item.description}
-                        price={item.price}
-                        image={item.image}
-                        item={item}
-                    />
-                ))}
-            </TabPanel>
-            <TabPanel value={value} index={3}>
-                {items.map(item => (
-                    <ProductItem
-                        key={item.id}
-                        title={item.title}
-                        description={item.description}
-                        price={item.price}
-                        image={item.image}
-                        item={item}
-                    />
-                ))}
-            </TabPanel>
-            <TabPanel value={value} index={4}>
-                {items.map(item => (
-                    <ProductItem
-                        key={item.id}
-                        title={item.title}
-                        description={item.description}
-                        price={item.price}
-                        image={item.image}
-                        item={item}
-                    />
-                ))}
-            </TabPanel>
-            <TabPanel value={value} index={5}>
-            </TabPanel>
         </Box>
     );
 }
