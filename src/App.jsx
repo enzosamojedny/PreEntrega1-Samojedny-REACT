@@ -1,6 +1,6 @@
 
 import './App.css'
-import Header from './components/nav-bar'
+import Header from './components/nav-bar/Index'
 import ItemListContainer from './components/body-items/ItemListContainer'
 import Item from './components/body-items/Item'
 import BasicTabs from './components/nav-bar/tabs'
@@ -15,8 +15,9 @@ function App() {
         <Header />
         <Routes>
           <Route path='/' element={<Item />} />
-          <Route exact path='/cart' element={<Cart />} />
+          <Route exact path='/cart' element={<><Cart /></>} />
           <Route exact path='/products/:id' element={<Item />} />
+          <Route path="/category/:id" element={<><Item /></>} />
           <Route exact path="/item-list" element={<ItemList items={Item} />} />
         </Routes>
       </BrowserRouter>

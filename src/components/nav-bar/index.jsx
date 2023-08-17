@@ -38,11 +38,11 @@ function Header() {
       </div>
       <nav>
         <div className='nav-buttons'>
-          <Link to="/category/maleclothes"><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>Men clothes</Button></Link>
-          <Link to="/category/womenclothes"><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>Women clothes</Button></Link>
-          <Link to="/category/technology"><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>Technology</Button></Link>
-          <Link to="/category/jewelry"><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>Jewelry</Button></Link>
-          <Link to="/category/flashsale"><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>FlashSale</Button></Link>
+          <Link to="/category/maleclothes" reloadDocument><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>Men clothes</Button></Link>
+          <Link to="/category/womenclothes" reloadDocument><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>Women clothes</Button></Link>
+          <Link to="/category/technology" reloadDocument><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>Technology</Button></Link>
+          <Link to="/category/jewelry" reloadDocument><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>Jewelry</Button></Link>
+          <Link to="/category/flashsale" reloadDocument><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>FlashSale</Button></Link>
         </div>
       </nav>
     </>
