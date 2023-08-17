@@ -53,13 +53,6 @@ function Item({ item }) {
                     <ResponsiveDialog />
                 )}
             </div>
-            <div style={{ backgroundColor: '#172738', display: 'flex', justifyContent: 'center', padding: '10px' }}>
-                <Link to="/category/maleclothes"><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>Men clothes</Button></Link>
-                <Link to="/category/womenclothes"><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>Women clothes</Button></Link>
-                <Link to="/category/technology"><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>Technology</Button></Link>
-                <Link to="/category/jewelry"><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>Jewelry</Button></Link>
-                <Link to="/category/flashsale"><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>FlashSale</Button></Link>
-            </div>
             <div className='product-container'>
                 {result.map((product, index) => (
                     <div key={index} className='product-item'>

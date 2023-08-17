@@ -5,6 +5,7 @@ import CartWidget from './CartWidget';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Button from '@mui/material/Button';
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -12,9 +13,10 @@ function Header() {
       <div className='header'>
         {/*IMG LOGO*/}
         <div>
-          <Button variant="dark"><a href='./'>
-            <img style={{ width: 120, height: 65 }} className='image' src={('/workpls.png')} alt='' />
-          </a>
+          <Button variant="dark">
+            <Link to='/' reloadDocument>
+              <img style={{ width: 120, height: 65 }} className='image' src={('/workpls.png')} alt='' />
+            </Link>
           </Button>
         </div>
         {/*SEARCH BAR*/}
@@ -34,8 +36,15 @@ function Header() {
         <CartWidget />
 
       </div>
-      <div className='nav-buttons'>
-      </div>
+      <nav>
+        <div className='nav-buttons'>
+          <Link to="/category/maleclothes"><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>Men clothes</Button></Link>
+          <Link to="/category/womenclothes"><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>Women clothes</Button></Link>
+          <Link to="/category/technology"><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>Technology</Button></Link>
+          <Link to="/category/jewelry"><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>Jewelry</Button></Link>
+          <Link to="/category/flashsale"><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>FlashSale</Button></Link>
+        </div>
+      </nav>
     </>
   )
 }
