@@ -1,56 +1,58 @@
+// Item.js
 
 import React, { useState, useEffect } from 'react';
-import { Backdrop, Box, Button, CircularProgress, Typography } from '@mui/material';
-
-import './ProductItem.css'
-//import ResponsiveDialog from './ResponsiveDialog';
+import { Link } from 'react-router-dom';
+import './ProductItem.css';
+import ResponsiveDialog from './ResponsiveDialog';
 import Counter from './Counter';
-// function SimpleBackdrop() {
-//     return (
-//         <Backdrop
-//             sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-//             open={true}
-//             onClick={() => { }}
-//         >
-//             <CircularProgress color="inherit" />
-//         </Backdrop>
-//     );
-// }
+import Skeleton from '@mui/material/Skeleton';
+import Stack from '@mui/material/Stack';
+import { Typography, Box, Button } from '@mui/material';
+import { fetchItems } from './fetchItems';
+
 function Item({ item }) {
-    //const [loading, setLoading] = useState(true);
-    const [result, setResult] = useState([])
+
+    const [loading, setLoading] = useState(true);
+    const [result, setResult] = useState([]);
+
     useEffect(() => {
-        let fetching = new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(fetch('https://fakestoreapi.com/products'));
-            }, 5000);
-        });
-        fetching
-            .then(res => res.json())
-            .then(json => {
-                const products = json.map(product => ({
+        const fetchData = async () => {
+            try {
+                const data = await fetchItems();
+                const products = data.map(product => ({
                     title: product.title,
                     price: product.price,
                     description: product.description,
                     category: product.category,
                     image: product.image,
-                    rating: product.rating
+                    rating: product.rating,
+                    id: product.id,
                 }));
-                setResult(products);//cuando se actualiza
-                //setLoading(false);
-            })
-            .catch(error => {
-                console.log("Oops. Something went wrong.");
-                console.log(error);
-                //setLoading(false);
-            });
-        //const timeoutId = setTimeout(() => {
-        //}, 3000);
-        //return () => clearTimeout(timeoutId);
+                setResult(products);
+                setLoading(false);
+            } catch (error) {
+                console.log(error)
+                setLoading(false);
+            }
+        };
+        fetchData();
     }, []);
+
     return (
-        <div>
-            {/*{loading ? <SimpleBackdrop /> : <ResponsiveDialog />}*/}
+        <div >
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                {loading ? (
+                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                        <Stack spacing={3} style={{ display: 'flex', flexDirection: 'column', margin: '0' }}>
+                            <Skeleton variant="rectangular" width={210} height={210} />
+                            <Skeleton variant="rectangular" width={210} height={210} />
+                            <Skeleton variant="rectangular" width={210} height={210} />
+                        </Stack>
+                    </div>
+                ) : (
+                    <ResponsiveDialog />
+                )}
+            </div>
             <div className='product-container'>
                 {result.map((product, index) => (
                     <div key={index} className='product-item'>
@@ -63,20 +65,18 @@ function Item({ item }) {
                             </Button>
                             <div>
                                 <Counter />
+                                <Link to={`/products/${product.id}`}>
+                                    <Button variant="outlined" size='small' style={{ color: '#000000', borderColor: '#172738', marginRight: 20, backgroundColor: '#E6E6FA', fontWeight: 600 }}>
+                                        Details
+                                    </Button>
+                                </Link>
                             </div>
                         </Box>
-                        {/*<p>Description: {product.description}</p>
-                        <p>Category: {product.category}</p>*/}
                     </div>
                 ))}
             </div>
-        </div>
+        </div >
     );
 }
 
 export default Item;
-
-
-
-
-

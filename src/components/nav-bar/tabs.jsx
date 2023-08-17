@@ -8,20 +8,15 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import MenuSharpIcon from '@mui/icons-material/MenuSharp';
 
-function TabPanel(props) {
-    const { children, value, index, ...other } = props;
+
+function TabPanel({ children, value, index }) {
     return (
-        <div
-            role="tabpanel"
-            hidden={value !== index}
-            id={`simple-tabpanel-${index}`}
-            aria-labelledby={`simple-tab-${index}`}
-            className="body-items"
-            {...other}
-        >
+        <div role="tabpanel" hidden={value !== index}>
             {value === index && (
-                <Box sx={{ p: 3 }}>
-                    <Typography component="span" className='body-items'>{children}</Typography>
+                <Box p={3}>
+                    <Typography component="span" className="body-items">
+                        {children}
+                    </Typography>
                 </Box>
             )}
         </div>
@@ -34,33 +29,16 @@ TabPanel.propTypes = {
     value: PropTypes.number.isRequired,
 };
 
-function allProps(index) {
-    return {
-        id: `simple-tab-${index}`,
-        'aria-controls': `simple-tabpanel-${index}`,
-    };
-}
-export default function BasicTabs() {
+function BasicTabs() {
     const [value, setValue] = useState(0);
     const [items, setItems] = useState([]);
 
     useEffect(() => {
         const fetchProductsByCategory = async () => {
             try {
-                let category = '';
-                if (value === 1) {
-                    category = "men's clothing";
-                } else if (value === 2) {
-                    category = "women's clothing";
-                } else if (value === 3) {
-                    category = "jewelery";
-                } else if (value === 4) {
-                    category = "electronics";
-                }
-                category = encodeURIComponent(category);
-                const response = await fetch(
-                    `https://fakestoreapi.com/products/category/${category}`
-                );
+                const categories = ["all", "men's clothing", "women's clothing", "jewelry", "electronics"];
+                const category = encodeURIComponent(categories[value]);
+                const response = await fetch(`https://fakestoreapi.com/products/category/${category}`);
                 const data = await response.json();
                 setItems(data);
             } catch (error) {
@@ -72,25 +50,31 @@ export default function BasicTabs() {
         }
     }, [value]);
 
-    const handleChange = (event, newValue) => {
+    const handleChange = (_, newValue) => {
         setValue(newValue);
     };
 
     return (
         <Box sx={{ width: '100%' }}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }} className='header-bottom'>
+            <Box sx={{ borderBottom: 1, borderColor: 'divider' }} className="header-bottom">
                 <Button>
                     <MenuSharpIcon style={{ color: 'white' }} />
                 </Button>
                 <Tabs value={value} onChange={handleChange} aria-label="tabs">
-                    <Tab label="All Products" {...allProps(0)} style={{ color: 'white' }} />
-                    <Tab label="Men's Clothing" {...allProps(1)} style={{ color: 'white' }} />
-                    <Tab label="Women's Clothing" {...allProps(2)} style={{ color: 'white' }} />
-                    <Tab label="Jewelry" {...allProps(3)} style={{ color: 'white' }} />
-                    <Tab label="Technology" {...allProps(4)} style={{ color: 'white' }} />
-                    <Tab label="Flash Sale" {...allProps(5)} style={{ color: 'white' }} />
+                    {["All Products", "Men's Clothing", "Women's Clothing", "Jewelry", "Technology", "Flash Sale"].map((label, index) => (
+                        <Tab key={index} label={label} {...allProps(index)} style={{ color: 'white' }} />
+                    ))}
                 </Tabs>
             </Box>
         </Box>
     );
 }
+
+function allProps(index) {
+    return {
+        id: `simple-tab-${index}`,
+        'aria-controls': `simple-tabpanel-${index}`,
+    };
+}
+
+export default BasicTabs;

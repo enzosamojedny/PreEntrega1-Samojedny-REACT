@@ -8,13 +8,6 @@ import Item from './routes/Item.jsx'
 import ItemList from './components/body-items/ItemList.jsx'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<App />} />
-        <Route exact path='/cart' element={<Cart />} />
-        <Route exact path='/item' element={<Item />} />
-        <Route exact path="/item-list" element={<ItemList items={Item} />} />
-      </Routes>
-    </BrowserRouter>
+    <App />
   </React.StrictMode>,
 )
