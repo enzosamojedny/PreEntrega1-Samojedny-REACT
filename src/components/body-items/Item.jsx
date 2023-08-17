@@ -9,12 +9,12 @@ import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
 import { Typography, Box, Button } from '@mui/material';
 import { fetchItems } from './fetchItems';
+import Loader from './Loader';
 
 function Item({ item }) {
     const { id } = useParams();
     const [loading, setLoading] = useState(true);
     const [result, setResult] = useState([]);
-
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -42,13 +42,7 @@ function Item({ item }) {
         <div >
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 {loading ? (
-                    <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        <Stack spacing={3} style={{ display: 'flex', flexDirection: 'column', margin: '0' }}>
-                            <Skeleton variant="rectangular" width={210} height={210} />
-                            <Skeleton variant="rectangular" width={210} height={210} />
-                            <Skeleton variant="rectangular" width={210} height={210} />
-                        </Stack>
-                    </div>
+                    <Loader />
                 ) : (
                     <ResponsiveDialog />
                 )}
