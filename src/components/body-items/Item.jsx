@@ -1,7 +1,7 @@
 // Item.js
 
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './ProductItem.css';
 import ResponsiveDialog from './ResponsiveDialog';
 import Counter from './Counter';
@@ -11,7 +11,7 @@ import { Typography, Box, Button } from '@mui/material';
 import { fetchItems } from './fetchItems';
 
 function Item({ item }) {
-
+    const { id } = useParams();
     const [loading, setLoading] = useState(true);
     const [result, setResult] = useState([]);
 
@@ -52,6 +52,13 @@ function Item({ item }) {
                 ) : (
                     <ResponsiveDialog />
                 )}
+            </div>
+            <div style={{ backgroundColor: '#172738', display: 'flex', justifyContent: 'center', padding: '10px' }}>
+                <Link to="/category/maleclothes"><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>Men clothes</Button></Link>
+                <Link to="/category/womenclothes"><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>Women clothes</Button></Link>
+                <Link to="/category/technology"><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>Technology</Button></Link>
+                <Link to="/category/jewelry"><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>Jewelry</Button></Link>
+                <Link to="/category/flashsale"><Button size='medium' style={{ color: '#000000', marginRight: 50, backgroundColor: 'white', fontWeight: 600 }}>FlashSale</Button></Link>
             </div>
             <div className='product-container'>
                 {result.map((product, index) => (
