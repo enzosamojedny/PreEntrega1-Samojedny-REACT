@@ -7,6 +7,7 @@ import BasicTabs from './components/nav-bar/tabs'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Cart from './routes/Cart'
 import ItemList from './components/body-items/ItemList'
+import ItemDetail from './components/body-items/ItemDetail'
 
 function App() {
   return (
@@ -16,8 +17,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Item />} />
           <Route exact path='/cart' element={<><Cart /></>} />
-          <Route exact path='/products/:id' element={<Item />} />
-          <Route path="/category/:id" element={<><Item /></>} />
+          <Route exact path='/products/:id' element={<ItemDetail />} />
+          <Route path="/category/:id" element={<Item />} />
           <Route exact path="/item-list" element={<ItemList items={Item} />} />
         </Routes>
       </BrowserRouter>

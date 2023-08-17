@@ -1,12 +1,9 @@
 // Item.js
-
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import './ProductItem.css';
 import ResponsiveDialog from './ResponsiveDialog';
 import Counter from './Counter';
-import Skeleton from '@mui/material/Skeleton';
-import Stack from '@mui/material/Stack';
 import { Typography, Box, Button } from '@mui/material';
 import { fetchItems } from './fetchItems';
 import Loader from './Loader';
@@ -57,8 +54,9 @@ function Item({ item }) {
                             <Button variant="outlined" size='small' style={{ color: '#000000', borderColor: '#172738', marginRight: 20, backgroundColor: '#E6E6FA', fontWeight: 600 }}>
                                 Add to Cart
                             </Button>
+                            <Counter />
                             <div>
-                                <Counter />
+
                                 <Link to={`/products/${product.id}`}>
                                     <Button variant="outlined" size='small' style={{ color: '#000000', borderColor: '#172738', marginRight: 20, backgroundColor: '#E6E6FA', fontWeight: 600 }}>
                                         Details
